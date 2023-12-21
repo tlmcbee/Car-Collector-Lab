@@ -5,13 +5,15 @@
 
 {% for car in cars %}
   <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ car.model }}</span>
-      <p>Make: {{ car.make }}</p>
-      <p>Year Produced: {{ car.year }}</p>
-      <p>Color: {{ car.color }}</p>
-      <p>Body Type: {{ car.body_type }}</p>
-    </div>
+    <a href="/cars/{{ car.id }}">
+      <div class="card-content">
+        <span class="card-title">{{ car.model }}</span>
+        <p>Make: {{ car.make }}</p>
+        <p>Year Produced: {{ car.year }}</p>
+        <p>Color: {{ car.color }}</p>
+        <p>Body Type: {{ car.body_type }}</p>
+      </div>
+    </a>
   </div>
 {% endfor %}
 
