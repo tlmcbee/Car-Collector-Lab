@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Send to the Junk Yard</h1>
+
+  <h4>Are you sure you want to send this <span class="teal-text">{{ object.make }} {{ object.model }}</span> to the junk yard?</h4>
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes - Junk it!" class="btn">
+    <a href="{% url 'detail' car.id %}">Cancel</a> 
+  </form>
+{% endblock %}
