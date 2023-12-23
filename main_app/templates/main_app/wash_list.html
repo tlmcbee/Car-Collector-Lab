@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Car Wash List</h1>
+
+{% for wash in wash_list %}
+  <a href="{% url 'wash_detail' wash.id %}">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ wash.name }}</span> 
+        <p>{{ wash.get_wash_type_display }} Car Wash</p>
+      </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}

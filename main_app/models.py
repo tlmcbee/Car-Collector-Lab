@@ -7,13 +7,35 @@ GAS =(
   ('R', 'Premium Unleaded')
 )
 
+PLACES = (
+  ('A', 'Automated'),
+  ('S','Self-Service'),
+  ('F', 'Full-Service')
+)
+
 # Create your models here.
+class Wash(models.Model):
+  name = models.CharField(max_length=100)
+  wash_type =models.CharField(
+    max_length=1,
+    choices=PLACES,
+    default=[0][0]
+  )
+
+  def __str__(self):
+    return self.name
+  
+  def get_absolute_url(self):
+    return reverse('wash_detail', kwargs={'pk': self.id})
+
+
 class Car(models.Model):
   make = models.CharField(max_length=100)
   model = models.CharField(max_length=100)
   year = models.IntegerField()
   color = models.CharField(max_length=100)
   body_type = models.CharField(max_length=100)
+  car_wash = models.ManyToManyField(Wash)
 
   def __str__(self):
     return f'{self.make} ({self.id})'
